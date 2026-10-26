@@ -1,0 +1,13 @@
+*.exe
+*.pdb
+*.zip
+*.log
+addons.json
+work/
+bin/
+obj/
+.vs/
+Interface/
+WTF/
+Cache/
+.wow-updater-self-*/

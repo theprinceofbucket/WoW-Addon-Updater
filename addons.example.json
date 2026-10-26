@@ -1,0 +1,170 @@
+{
+  "trustedHosts": [
+    "codeload.github.com",
+    "raw.githubusercontent.com",
+    "gitlab.com",
+    "warperia.com"
+  ],
+  "sources": [
+    {
+      "name": "Leatrix Maps",
+      "type": "github",
+      "repository": "https://github.com/5Buttons/Leatrix-Maps-3.3.5",
+      "branch": "main",
+      "addons": ["Leatrix_Maps"]
+    },
+    {
+      "name": "WhatsTraining",
+      "type": "github",
+      "repository": "https://github.com/anhility/WhatsTraining_WotLK",
+      "branch": "master",
+      "addons": ["WhatsTraining_WotLK"]
+    },
+    {
+      "name": "DBM Warmane",
+      "type": "github",
+      "repository": "https://github.com/Zidras/DBM-Warmane",
+      "branch": "main",
+      "addons": "auto"
+    },
+    {
+      "name": "WeakAuras WotLK",
+      "type": "github",
+      "repository": "https://github.com/NoM0Re/WeakAuras-WotLK",
+      "branch": "master",
+      "addons": "auto"
+    },
+    {
+      "name": "Details WotLK",
+      "type": "github",
+      "repository": "https://github.com/Bunny67/Details-WotLK",
+      "branch": "master",
+      "addons": "auto"
+    },
+    {
+      "name": "Questie 3.3.5a",
+      "type": "github",
+      "repository": "https://github.com/Aldori15/Questie",
+      "branch": "335",
+      "addons": [
+        { "target": "Questie-335", "toc": "Questie-335" }
+      ]
+    },
+    {
+      "name": "Leatrix Plus",
+      "type": "github",
+      "repository": "https://github.com/Sattva-108/Leatrix_Plus",
+      "branch": "main",
+      "addons": [
+        { "target": "Leatrix_Plus", "toc": "Leatrix_Plus_Wrath" }
+      ]
+    },
+    {
+      "name": "ClassicAPI",
+      "type": "gitlab",
+      "repository": "https://gitlab.com/tsoukie-3.3.5/classicapi",
+      "branch": "main",
+      "addons": "auto"
+    },
+    {
+      "name": "CompactRaidFrame",
+      "type": "gitlab",
+      "repository": "https://gitlab.com/tsoukie-3.3.5/compactraidframe",
+      "branch": "main",
+      "addons": "auto"
+    },
+    {
+      "name": "CompactRaidFrame HealEx",
+      "type": "gitlab",
+      "repository": "https://gitlab.com/Tsoukie/compactraidframe_healex",
+      "branch": "main",
+      "addons": "auto"
+    },
+    {
+      "name": "NotPlater",
+      "type": "github",
+      "repository": "https://github.com/RichSteini/NotPlater",
+      "branch": "main",
+      "addons": [
+        { "target": "NotPlater-3.3.5", "toc": "NotPlater-3.3.5" }
+      ]
+    },
+    {
+      "name": "AllStats",
+      "type": "zip",
+      "url": "https://raw.githubusercontent.com/NoM0Re/WoW-3.3.5a-Addons/main/src/Addons/AllStats.zip",
+      "addons": ["AllStats"]
+    },
+    {
+      "name": "AtlasLoot",
+      "type": "zip",
+      "url": "https://raw.githubusercontent.com/NoM0Re/WoW-3.3.5a-Addons/main/src/Addons/AtlasLoot.zip",
+      "addons": "auto"
+    },
+    {
+      "name": "Cheese",
+      "type": "zip",
+      "url": "https://raw.githubusercontent.com/NoM0Re/WoW-3.3.5a-Addons/main/src/Addons/Cheese.zip",
+      "addons": ["Cheese"]
+    },
+    {
+      "name": "Postal",
+      "type": "zip",
+      "url": "https://raw.githubusercontent.com/NoM0Re/WoW-3.3.5a-Addons/main/src/Addons/Postal.zip",
+      "addons": ["Postal"]
+    },
+    {
+      "name": "PallyPower",
+      "type": "github",
+      "repository": "https://github.com/NoM0Re/PallyPower-Improved-3.3.5",
+      "branch": "main",
+      "addons": ["PallyPower"]
+    },
+    {
+      "name": "MinimapButtonButton",
+      "enabled": true,
+      "type": "github",
+      "repository": "https://github.com/Gaisberg/MinimapButtonButton-3.3.5a",
+      "branch": "main",
+      "addons": [
+        { "target": "MinimapButtonButton", "toc": "MinimapButtonButton" }
+      ]
+    },
+    {
+      "name": "TomTom",
+      "type": "warperia",
+      "url": "https://warperia.com/addon-wotlk/tomtom/download/",
+      "addons": ["TomTom"]
+    },
+    {
+      "name": "NPCScan",
+      "type": "warperia",
+      "url": "https://warperia.com/addon-wotlk/npcscan/download/",
+      "addons": ["_NPCScan"]
+    },
+    {
+      "name": "WorldMapTooltipScale",
+      "enabled": true,
+      "type": "github",
+      "repository": "https://github.com/theprinceofbucket/WorldMapTooltipScale",
+      "branch": "main",
+      "addons": ["WorldMapTooltipScale"]
+    },
+    {
+      "name": "Bagnon (optional)",
+      "enabled": false,
+      "type": "github",
+      "repository": "https://github.com/RichSteini/Bagnon-3.3.5",
+      "branch": "main",
+      "addons": "auto"
+    },
+    {
+      "name": "Beispiel: direkter ZIP-Download",
+      "enabled": false,
+      "type": "zip",
+      "url": "https://downloads.example.org/MyAddon-3.3.5.zip",
+      "sha256": "OPTIONAL_SHA256_FROM_THE_PUBLISHER",
+      "addons": ["MyAddon"]
+    }
+  ]
+}
