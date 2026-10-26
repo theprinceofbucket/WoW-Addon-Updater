@@ -20,7 +20,7 @@ Open **⋯** at the top left to switch between **English and German**. The langu
 
 Future self-updates require a regular release with a tag such as `v0.5.1` and exactly one asset named `WoW-Addon-Updater.exe`. Its product version must match the tag, and GitHub must provide a SHA-256 digest for the asset. Prereleases and downgrades are not installed. The application remains a single portable EXE; a temporary helper used to replace the running executable is created in the WoW folder and removed after a successful restart.
 
-**Self-update testing:** Local tests cover executable replacement, restart, cancellation, and cleanup. An end-to-end online update from 0.5.0 to a newer public release has not yet been tested.
+**Self-update testing:** On October 26, 2026, the project owner successfully tested the online update check with version 0.5.0: the updater connected to GitHub, read the public release information, and correctly reported that the installed version was up to date. Local tests cover executable replacement, restart, cancellation, and cleanup. Downloading and installing a newer public release through the complete online self-update process has not yet been tested.
 
 - **Find addons / check updates:** Detects supported installed addons, selects their checkboxes, and compares them with downloaded packages. This step does not change installed addon files.
 - **Install / update selection:** Installs selected missing or unchecked packages and detected updates. Packages already checked and found up to date are skipped. Downloads from the check are reused within the session.
