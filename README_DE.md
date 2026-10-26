@@ -20,7 +20,7 @@ Es ist keine Pfadeingabe nötig. Windows PowerShell 5.1 und .NET Framework 4.8 w
 
 Für künftige Self-Updates muss ein reguläres Release mit einem Tag wie `v0.5.1` genau ein Asset `WoW-Addon-Updater.exe` enthalten. Dessen Produktversion muss zum Tag passen; GitHub muss für das Asset einen SHA-256-Digest liefern. Es werden keine Vorab-Releases oder Downgrades installiert. Die Anwendung bleibt eine einzelne portable EXE; der Helfer für den laufenden Dateiaustausch wird vorübergehend im WoW-Ordner angelegt und nach erfolgreichem Neustart entfernt.
 
-**Teststand der Selbstaktualisierung:** Lokale Tests decken EXE-Austausch, Neustart, Abbruch und Bereinigung ab. Ein vollständiges Online-Update von 0.5.0 auf eine neuere öffentliche Version wurde noch nicht getestet.
+**Teststand der Selbstaktualisierung:** Am 26.10.2026 wurde die Online-Updateprüfung mit Version 0.5.0 vom Projektbetreiber erfolgreich getestet: Der Updater stellte die Verbindung zu GitHub her, las die öffentlichen Release-Informationen und meldete korrekt „Der Updater ist aktuell.“ Lokale Tests decken EXE-Austausch, Neustart, Abbruch und Bereinigung ab. Der vollständige Online-Ablauf mit Download und Installation einer neueren öffentlichen Version wurde noch nicht getestet.
 
 - **Addons auslesen / prüfen:** Erkennt bekannte installierte Addons, setzt deren Haken und vergleicht sie mit den heruntergeladenen Paketen. Dieser Schritt verändert keine installierten Addon-Dateien.
 - **Auswahl installieren / updaten:** Installiert ausgewählte fehlende oder ungeprüfte Pakete und erkannte Updates. Bereits aktuell geprüfte Pakete werden übersprungen. Downloads aus der Prüfung werden innerhalb der Sitzung wiederverwendet.
