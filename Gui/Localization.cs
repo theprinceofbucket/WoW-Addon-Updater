@@ -65,13 +65,15 @@ namespace WowUpdater {
                 foreach (var pair in captions) if (!pair.Key.IsDisposed) pair.Key.Text = L.T(pair.Value);
                 foreach (ColumnHeader col in list.Columns) {
                     if (!headings.ContainsKey(col)) headings[col] = col.Text;
-                    col.Text = L.T(headings[col]);
+                    string heading = L.T(headings[col]);
+                    if (col.Text != heading) col.Text = heading;
                 }
                 foreach (Addon addon in addons) foreach (ListViewItem.ListViewSubItem cell in addon.Row.SubItems) {
                     string original;
                     if (!cells.TryGetValue(cell, out original) || (cell.Text != original && cell.Text != L.Translate(original, true)))
                         cells[cell] = cell.Text;
-                    cell.Text = L.T(cells[cell]);
+                    string translated = L.T(cells[cell]);
+                    if (cell.Text != translated) cell.Text = translated;
                 }
                 if (languageMenu != null) {
                     languageMenu.Text = L.T("Sprache");
@@ -79,8 +81,10 @@ namespace WowUpdater {
                     germanMenu.Checked = !L.English;
                     englishMenu.Checked = L.English;
                 }
-                foreach (var pair in tooltips) pair.Key.Row.ToolTipText = L.T(pair.Value);
-                list.Invalidate();
+                foreach (var pair in tooltips) {
+                    string tooltip = L.T(pair.Value);
+                    if (pair.Key.Row.ToolTipText != tooltip) pair.Key.Row.ToolTipText = tooltip;
+                }
             } finally { translating = false; }
         }
         void ChangeLanguage(bool english, bool save) {

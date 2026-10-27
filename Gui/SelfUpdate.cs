@@ -207,17 +207,17 @@ namespace WowUpdater {
         }
         internal static void TestMetadata() {
             var asset = new Dictionary<string,object> {
-                { "name", AssetName }, { "browser_download_url", "https://github.com/" + Repository + "/releases/download/v0.5.1/" + AssetName },
+                { "name", AssetName }, { "browser_download_url", "https://github.com/" + Repository + "/releases/download/v0.5.2/" + AssetName },
                 { "size", 50000 }, { "digest", "sha256:" + new string('a', 64) }
             };
-            var data = new Dictionary<string,object> { { "tag_name", "v0.5.1" }, { "draft", false }, { "prerelease", false }, { "assets", new[] { asset } } };
+            var data = new Dictionary<string,object> { { "tag_name", "v0.5.2" }, { "draft", false }, { "prerelease", false }, { "assets", new[] { asset } } };
             var json = new JavaScriptSerializer();
-            if (ParseRelease(json.Serialize(data)).Version != new Version("0.5.1")) throw new Exception("New release not detected.");
+            if (ParseRelease(json.Serialize(data)).Version != new Version("0.5.2")) throw new Exception("New release not detected.");
             data["tag_name"] = "v" + AppVersion.Current;
             if (ParseRelease(json.Serialize(data)) != null) throw new Exception("Same version offered as update.");
             data["tag_name"] = "v0.4.0";
             if (ParseRelease(json.Serialize(data)) != null) throw new Exception("Downgrade offered.");
-            data["tag_name"] = "v0.5.1"; data["prerelease"] = true;
+            data["tag_name"] = "v0.5.2"; data["prerelease"] = true;
             if (ParseRelease(json.Serialize(data)) != null) throw new Exception("Prerelease offered.");
             data["prerelease"] = false; data["draft"] = true;
             if (ParseRelease(json.Serialize(data)) != null) throw new Exception("Draft offered.");

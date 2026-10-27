@@ -1,0 +1,38 @@
+{
+  "_hinweis": "Als addons.custom.json neben der EXE speichern. Beispiele ersetzen und enabled auf true setzen. Änderungen werden beim Neustart geladen. Nur Addons für WoW 3.3.5a verwenden.",
+  "_supportedLinks": "github: Repository + branch; gitlab: Repository + branch oder Tag; zip: direkte HTTPS-ZIP-Adresse (auch GitHub-Tags/Release-ZIPs); warperia: https://warperia.com/addon-wotlk/name/download/. Keine beliebigen Webseiten mit Downloadknopf.",
+  "_english": "Save as addons.custom.json next to the EXE, replace placeholders and set enabled to true. Restart to load changes. Explicit addon folders required; built-in entries cannot be overridden. See README.md.",
+  "trustedHosts": ["github.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com", "downloads.example.org"],
+  "sources": [
+    {
+      "name": "Mein GitHub-Addon",
+      "enabled": false,
+      "type": "github",
+      "repository": "https://github.com/OWNER/REPOSITORY",
+      "branch": "main",
+      "addons": ["MeinAddon"]
+    },
+    {
+      "name": "Mein GitLab-Addon",
+      "enabled": false,
+      "type": "gitlab",
+      "repository": "https://gitlab.com/GROUP/PROJECT",
+      "branch": "main",
+      "addons": ["MeinGitLabAddon"]
+    },
+    {
+      "name": "Mein ZIP-Addon",
+      "enabled": false,
+      "type": "zip",
+      "url": "https://downloads.example.org/MeinZipAddon.zip",
+      "addons": [{ "target": "MeinZipAddon", "toc": "MeinZipAddon" }]
+    },
+    {
+      "name": "Mein Warperia-Addon",
+      "enabled": false,
+      "type": "warperia",
+      "url": "https://warperia.com/addon-wotlk/ADDONNAME/download/",
+      "addons": ["MeinWarperiaAddon"]
+    }
+  ]
+}

@@ -2,9 +2,11 @@
 
 [English](README.md) | [Deutsch](README_DE.md)
 
-**Version 0.5.0 · Windows · World of Warcraft WotLK 3.3.5a**
+**Version 0.5.1 Beta · Windows · World of Warcraft WotLK 3.3.5a**
 
-A portable updater with a dark interface in English and German. It checks a built-in selection of 21 addon packages and can install or update selected packages. Addons are downloaded from GitHub, GitLab, and selected ZIP and website sources. Intended for the original 3.3.5a client, not current Retail or Classic clients.
+**Beta:** This branch documents 0.5.1, available as a GitHub pre-release for manual testing. The latest stable release remains 0.5.0. The updater's update check and the latest-release download link skip this beta. Download the beta EXE and optional JSON template from [release v0.5.1](https://github.com/theprinceofbucket/WoW-Addon-Updater/releases/tag/v0.5.1).
+
+A portable updater with a dark interface in English and German. It checks a built-in selection of 22 addon packages and can install or update selected packages. Addons are downloaded from GitHub, GitLab, and selected ZIP and website sources. Intended for the original 3.3.5a client, not current Retail or Classic clients.
 
 ## Download and launch
 
@@ -32,9 +34,30 @@ The list is sorted alphabetically. Checkboxes are locked while an operation is r
 
 ## Supported addons
 
-AllStats, AtlasLoot, Bagnon (optional), Cheese, ClassicAPI, CompactRaidFrame, CompactRaidFrame HealEx, DBM Warmane, Details WotLK, Leatrix Maps, Leatrix Plus, MinimapButtonButton, NotPlater, NPCScan, PallyPower, Postal, Questie 3.3.5a, TomTom, WeakAuras WotLK, WhatsTraining WotLK, and WorldMapTooltipScale.
+AllStats, AtlasLoot, Bagnon (optional), Cheese, ClassicAPI, ClassQoLTalentWarning, CompactRaidFrame, CompactRaidFrame HealEx, DBM Warmane, Details WotLK, Leatrix Maps, Leatrix Plus, MinimapButtonButton, NotPlater, NPCScan, PallyPower, Postal, Questie 3.3.5a, TomTom, WeakAuras WotLK, WhatsTraining WotLK, and WorldMapTooltipScale.
 
-APIDocumentation is included in the WeakAuras package. Questie is installed as **Questie-335**, and NotPlater as **NotPlater-3.3.5**. Select the checkbox manually to install an additional addon. Sources, branches, and folder mappings are defined in `addons.example.json` and embedded in the EXE. An external `addons.json` does not change the EXE's catalog.
+APIDocumentation is included in the WeakAuras package. Questie is installed as **Questie-335**, and NotPlater as **NotPlater-3.3.5**. Select the checkbox manually to install an additional addon. Sources, branches, and folder mappings are defined in `addons.example.json` and embedded in the EXE. Use `addons.custom.json` to add your own entries; the old `addons.json` is not loaded.
+
+## Adding custom addons
+
+Starting with 0.5.1, **`addons.custom.json` next to the EXE** can extend the built-in catalog. Copy [addons.custom.example.json](addons.custom.example.json), rename the copy, replace the placeholders and set `"enabled": true` for the entries you want. Restart the updater to load changes. The example file itself is not loaded, and all sample entries are disabled.
+
+Supported sources:
+
+| Type | Address and settings |
+| --- | --- |
+| `github` | `repository`: https://github.com/OWNER/REPOSITORY and `branch`, e.g. `main`. |
+| `gitlab` | `repository`: https://gitlab.com/GROUP/PROJECT and `branch` (branch or tag). |
+| `zip` | `url`: direct HTTPS ZIP download, including GitHub tag archives or release ZIPs. A version-specific URL stays on that version. |
+| `warperia` | `url`: https://warperia.com/addon-wotlk/name/download/ – provider limits still apply. |
+
+Arbitrary pages with download buttons and downloads requiring login are not automatically supported. Only use addons for WoW 3.3.5a. Add extra download and redirect servers as plain hostnames in `trustedHosts`; these permissions apply only to custom sources. Standard GitHub and GitLab archives need no additional hosts.
+
+`addons` must explicitly list folders, e.g. `["MyAddon"]`. Alternatively, use `[{"target":"MyAddon","toc":"MyAddon"}]`, with no extension in `toc`. The extracted target folder must contain `MyAddon.toc` directly. The updater finds the matching folder inside the archive; archive wrapper folders are not installed. Custom sources do not support `"auto"`.
+
+Custom entries are sorted alphabetically. Addons not yet installed start unchecked. Existing names, repositories or declared target folders are not overridden. Do not add individual modules of built-in packages separately. Invalid entries are skipped with a log warning; malformed JSON leaves the built-in catalog available. `"enabled": false` hides a custom entry. An optional `sha256` can pin a ZIP checksum; update it when the archive changes.
+
+The file is read only and is preserved when the EXE updates itself. Without it, the updater still works as a single EXE.
 
 ## Backups and limitations
 
@@ -42,7 +65,7 @@ Replaced addon folders are backed up under `Interface/AddOns_UpdaterBackups`. WT
 
 Warperia may limit downloads. The updater does not bypass these limits. A validated Warperia download is reused locally for up to 24 hours, so it may represent an older source version. **Start WoW** clears this cache, requiring new downloads on the next check. Checking other sources downloads archives rather than querying version numbers alone. Addon packages are processed sequentially.
 
-Version 0.5.0 is an early release. Download providers and addon authors may change their file structures. A successful file comparison does not guarantee that an addon works correctly in-game. When reporting an issue, include the updater version, addon name, and log; remove personal paths before publishing the log.
+Version 0.5.1 is a beta for testing. Download providers and addon authors may change their file structures. A successful file comparison does not guarantee that an addon works correctly in-game. When reporting an issue, include the updater version, addon name, and log; remove personal paths before publishing the log.
 
 ## Building from source
 

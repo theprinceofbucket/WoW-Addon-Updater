@@ -7,6 +7,13 @@
   ],
   "sources": [
     {
+      "name": "ClassQoLTalentWarning",
+      "type": "github",
+      "repository": "https://github.com/theprinceofbucket/ClassQoLTalentWarning",
+      "branch": "main",
+      "addons": ["ClassQoLTalentWarning"]
+    },
+    {
       "name": "Leatrix Maps",
       "type": "github",
       "repository": "https://github.com/5Buttons/Leatrix-Maps-3.3.5",

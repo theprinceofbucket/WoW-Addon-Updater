@@ -3,6 +3,7 @@
 *.zip
 *.log
 addons.json
+addons.custom.json
 work/
 bin/
 obj/

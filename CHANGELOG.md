@@ -1,5 +1,14 @@
 # Änderungen
 
+## 0.5.1 – Beta (Pre-release), 27.10.2026
+
+- ClassQoLTalentWarning ergänzt; 22 eingebaute Pakete in alphabetischer Reihenfolge.
+- Unveränderte Tabellenzellen und Spaltenüberschriften werden bei Protokollmeldungen nicht mehr erneut gesetzt; die pauschale Tabellen-Neuzeichnung entfällt.
+- Separates sichtbares Löschen des Tabellenhintergrunds entfernt; der native Doppelpuffer zeichnet den Hintergrund.
+- Eigene Addons über `addons.custom.json` neben der EXE; bestehende Einträge werden nicht überschrieben, fehlerhafte Einträge werden protokolliert und übersprungen.
+- Deaktivierte Beispiele und Erklärung unterstützter Quellen in `addons.custom.example.json` sowie beiden READMEs.
+- Lokale Tests für Sortierung, Ordnererkennung, JSON-Fehler, doppelte Einträge und unnötige Tabellen-Neuzeichnungen bestanden. Sichtprüfung auf dem Nutzer-PC steht aus.
+
 ## 0.5.0 – 26.10.2026
 
 Erste öffentliche Version. Frühere Entwicklungsstände sind nicht enthalten.

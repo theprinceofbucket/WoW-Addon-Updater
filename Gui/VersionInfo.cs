@@ -3,9 +3,9 @@ using System.Reflection;
 [assembly: AssemblyTitle("WoW Addon Updater")]
 [assembly: AssemblyProduct("WoW Addon Updater für WoW 3.3.5a")]
 [assembly: AssemblyDescription("Addons prüfen, installieren und updaten")]
-[assembly: AssemblyVersion("0.5.0.0")]
-[assembly: AssemblyFileVersion("0.5.0.0")]
-[assembly: AssemblyInformationalVersion("0.5.0")]
+[assembly: AssemblyVersion("0.5.1.0")]
+[assembly: AssemblyFileVersion("0.5.1.0")]
+[assembly: AssemblyInformationalVersion("0.5.1")]
 
 namespace WowUpdater {
     static class AppVersion {

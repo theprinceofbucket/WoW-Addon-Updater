@@ -4,7 +4,7 @@
 
 Kopiere **nur `WoW-Addon-Updater.exe`** in deinen WoW-Ordner direkt neben `Wow.exe` und starte sie per Doppelklick. Skript und Addon-Katalog sind in der EXE enthalten. Keine zusätzliche Installation, keine Pfadeingabe und keine Administratorrechte sind normalerweise erforderlich. Windows PowerShell und .NET Framework müssen auf Windows verfügbar sein.
 
-Die EXE verwendet ihren eingebauten Katalog mit 21 Addon-Paketen. Eine vorhandene `addons.json` der älteren Skript-Version wird nicht gelesen oder verändert. Die Auswahl erfolgt über die Haken im Fenster. Neue Katalogversionen werden mit einer aktualisierten EXE ausgeliefert.
+Die EXE verwendet ihren eingebauten Katalog mit 22 Addon-Paketen, einschließlich ClassQoLTalentWarning. Eigene Addons können mit `addons.custom.json` neben der EXE ergänzt werden. Kopiere dazu `addons.custom.example.json`, benenne die Kopie um und passe die deaktivierten Beispiele an. Unterstützt werden GitHub-Repositories mit Branch, GitLab-Repositories mit Branch/Tag, direkte HTTPS-ZIP-Downloads und Warperia-Downloadseiten. Details zu Ordnerzuordnung, trustedHosts und Fehlerbehandlung stehen im Abschnitt „Eigene Addons ergänzen“ der [deutschen README](README_DE.md). Die Datei wird beim Start eingelesen; starte den Updater nach Änderungen neu. Vorhandene Katalogeinträge werden nicht überschrieben. Eine `addons.json` der älteren Skript-Version wird nicht gelesen oder verändert.
 
 Das Fenster verwendet standardmäßig ein dunkles Design. Auf unterstützten Windows-Versionen wird auch die Titelleiste dunkel dargestellt.
 

@@ -2,9 +2,11 @@
 
 [English](README.md) | [Deutsch](README_DE.md)
 
-**Version 0.5.0 · Windows · World of Warcraft WotLK 3.3.5a**
+**Version 0.5.1 Beta · Windows · World of Warcraft WotLK 3.3.5a**
 
-Ein portabler Updater mit dunkler Oberfläche in Deutsch und Englisch. Er prüft eine hinterlegte Auswahl von 21 Addon-Paketen und kann ausgewählte Pakete installieren oder updaten. Die Addons stammen von GitHub, GitLab und ausgewählten ZIP-/Webseitenquellen. Nicht für aktuelle Retail- oder Classic-Clients gedacht.
+**Beta:** Dieser Branch beschreibt 0.5.1, als GitHub-Vorabversion zum manuellen Testen verfügbar. Das neueste reguläre Release bleibt 0.5.0. Die Updateprüfung des Updaters und der dauerhafte Download-Link überspringen diese Beta. EXE und optionale JSON-Vorlage findest du im [Release v0.5.1](https://github.com/theprinceofbucket/WoW-Addon-Updater/releases/tag/v0.5.1).
+
+Ein portabler Updater mit dunkler Oberfläche in Deutsch und Englisch. Er prüft eine hinterlegte Auswahl von 22 Addon-Paketen und kann ausgewählte Pakete installieren oder updaten. Die Addons stammen von GitHub, GitLab und ausgewählten ZIP-/Webseitenquellen. Nicht für aktuelle Retail- oder Classic-Clients gedacht.
 
 ## Herunterladen und starten
 
@@ -32,9 +34,30 @@ Die Liste ist alphabetisch sortiert. Während laufender Vorgänge bleiben die Ha
 
 ## Unterstützte Addons
 
-AllStats, AtlasLoot, Bagnon (optional), Cheese, ClassicAPI, CompactRaidFrame, CompactRaidFrame HealEx, DBM Warmane, Details WotLK, Leatrix Maps, Leatrix Plus, MinimapButtonButton, NotPlater, NPCScan, PallyPower, Postal, Questie 3.3.5a, TomTom, WeakAuras WotLK, WhatsTraining WotLK und WorldMapTooltipScale.
+AllStats, AtlasLoot, Bagnon (optional), Cheese, ClassicAPI, ClassQoLTalentWarning, CompactRaidFrame, CompactRaidFrame HealEx, DBM Warmane, Details WotLK, Leatrix Maps, Leatrix Plus, MinimapButtonButton, NotPlater, NPCScan, PallyPower, Postal, Questie 3.3.5a, TomTom, WeakAuras WotLK, WhatsTraining WotLK und WorldMapTooltipScale.
 
-APIDocumentation gehört zum WeakAuras-Paket. Questie wird als **Questie-335** installiert, NotPlater als **NotPlater-3.3.5**. Neu gewünschte Addons werden durch manuelles Anhaken installiert. Quellen, Branches und Ordnerzuordnungen stehen in `addons.example.json` und sind in die EXE eingebettet. Eine externe `addons.json` ändert den Katalog der EXE nicht.
+APIDocumentation gehört zum WeakAuras-Paket. Questie wird als **Questie-335** installiert, NotPlater als **NotPlater-3.3.5**. Neu gewünschte Addons werden durch manuelles Anhaken installiert. Quellen, Branches und Ordnerzuordnungen stehen in `addons.example.json` und sind in die EXE eingebettet. Eigene Einträge können über `addons.custom.json` ergänzt werden; die ältere `addons.json` wird nicht geladen.
+
+## Eigene Addons ergänzen
+
+Ab Version 0.5.1 kann eine **`addons.custom.json` direkt neben der EXE** den eingebauten Katalog ergänzen. Kopiere [addons.custom.example.json](addons.custom.example.json), benenne die Kopie um, ersetze die Platzhalter und setze bei gewünschten Einträgen `"enabled": true`. Starte den Updater danach neu. Die Vorlage selbst wird nicht geladen; ihre Beispiele sind deaktiviert.
+
+Unterstützte Quellen:
+
+| Typ | Adresse und Einstellungen |
+| --- | --- |
+| `github` | `repository`: https://github.com/OWNER/REPOSITORY und `branch`, z. B. `main`. |
+| `gitlab` | `repository`: https://gitlab.com/GROUP/PROJECT und `branch` (Branch oder Tag). |
+| `zip` | `url`: direkter HTTPS-ZIP-Download, auch GitHub-Tag-Archive oder Release-ZIPs. Ein fester Versionslink bleibt auf dieser Version. |
+| `warperia` | `url`: https://warperia.com/addon-wotlk/name/download/ – Limits des Anbieters gelten weiterhin. |
+
+Beliebige Webseiten mit Downloadknopf sowie Login-Downloads werden nicht automatisch unterstützt. Verwende ausschließlich Addons für WoW 3.3.5a. Zusätzliche Download- und Weiterleitungsserver müssen als reine Hostnamen in `trustedHosts` stehen; diese Freigaben gelten nur für eigene Quellen. GitHub- und GitLab-Standardarchive benötigen keine zusätzlichen Hosts.
+
+`addons` muss eine explizite Ordnerliste sein, z. B. `["MeinAddon"]`. Alternativ ist `[{"target":"MeinAddon","toc":"MeinAddon"}]` möglich; `toc` wird ohne Dateiendung angegeben. Im entpackten Zielordner muss direkt `MeinAddon.toc` liegen. Das Programm sucht den passenden Ordner im Archiv; zusätzliche Archiv-Hüllen landen nicht im AddOns-Ordner. `"auto"` wird bei eigenen Quellen nicht unterstützt.
+
+Eigene Einträge werden alphabetisch einsortiert. Neue, noch nicht installierte Addons sind zunächst nicht angehakt. Bereits verwaltete Namen, Repositories oder deklarierte Zielordner werden nicht überschrieben. Trage keine Module bereits eingebauter Pakete zusätzlich ein. Fehlerhafte Einträge werden mit Hinweis im Protokoll übersprungen; bei ungültigem JSON bleibt der eingebaute Katalog verfügbar. `"enabled": false` blendet einen eigenen Eintrag aus. Optional kann `sha256` einen festen ZIP-Hash vorgeben; dieser muss bei einem neuen Archiv angepasst werden.
+
+Die Datei wird nur gelesen und bleibt auch bei einem EXE-Update erhalten. Ohne sie funktioniert der Updater weiterhin als einzelne EXE.
 
 ## Sicherungen und Grenzen
 
@@ -42,7 +65,7 @@ Ersetzte Addon-Ordner werden unter `Interface/AddOns_UpdaterBackups` gesichert. 
 
 Warperia kann Downloads begrenzen. Der Updater umgeht keine Limits. Ein geprüfter Warperia-Download wird bis zu 24 Stunden lokal wiederverwendet; dabei kann ein älterer Quellenstand angezeigt werden. „WoW starten“ löscht diesen Cache, sodass beim nächsten Prüfen erneut Downloads nötig sind. Die Prüfung anderer Quellen lädt grundsätzlich Archive; es gibt keine reine Versionsabfrage. Die Addon-Verarbeitung erfolgt nacheinander.
 
-Version 0.5.0 ist eine frühe Veröffentlichung. Downloadanbieter und Addon-Autoren können Strukturen ändern. Ein erfolgreicher Dateivergleich garantiert keine fehlerfreie Funktion im Spiel. Fehler bitte mit Updater-Version, Addon-Name und Protokoll melden; persönliche Pfade vor Veröffentlichung des Protokolls entfernen.
+Version 0.5.1 ist eine Beta zum Testen. Downloadanbieter und Addon-Autoren können Strukturen ändern. Ein erfolgreicher Dateivergleich garantiert keine fehlerfreie Funktion im Spiel. Fehler bitte mit Updater-Version, Addon-Name und Protokoll melden; persönliche Pfade vor Veröffentlichung des Protokolls entfernen.
 
 ## Selbst bauen
 

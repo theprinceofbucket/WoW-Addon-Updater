@@ -41,8 +41,7 @@ namespace WowUpdater {
         }
         protected override void WndProc(ref Message message) {
             if (message.Msg == 0x14 && message.WParam != IntPtr.Zero) { // WM_ERASEBKGND
-                using (var graphics = Graphics.FromHdc(message.WParam))
-                using (var brush = new SolidBrush(BackColor)) graphics.FillRectangle(brush, ClientRectangle);
+                // Hintergrund im nativen Double Buffer zeichnen, nicht vorab sichtbar löschen.
                 message.Result = new IntPtr(1);
                 return;
             }
@@ -72,6 +71,7 @@ namespace WowUpdater {
     }
     public class Addon {
         public Dictionary<string, object> Source;
+        public string[] TrustedHosts;
         public string Name;
         public string[] Folders;
         public bool Installed;
@@ -137,6 +137,7 @@ namespace WowUpdater {
                 if (name.StartsWith("Beispiel:")) continue;
                 addons.Add(new Addon { Source = source, Name = name, Folders = FolderNames(source) });
             }
+            LoadCustomCatalog();
             addons.Sort((left, right) => StringComparer.Create(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), true).Compare(left.Name, right.Name));
             BuildWindow();
             HandleCreated += delegate {
@@ -144,6 +145,8 @@ namespace WowUpdater {
             };
             ScanInstalled();
             BuildOptions();
+            foreach (string warning in catalogWarnings) AppendLog(warning);
+            if (catalogWarnings.Count > 0) status.Text = L.English ? "Custom addon configuration: see log." : "Eigene Addon-Konfiguration: siehe Protokoll.";
             FormClosing += delegate(object sender, FormClosingEventArgs args) {
                 if (selfUpdating) {
                     args.Cancel = true;
@@ -460,7 +463,7 @@ namespace WowUpdater {
             addon.Verified = false;
             var source = new Dictionary<string, object>(addon.Source);
             source["enabled"] = true; // Die Auswahl im Fenster ist maßgeblich.
-            var config = new Dictionary<string, object> { { "trustedHosts", hosts }, { "sources", new[] { source } } };
+            var config = new Dictionary<string, object> { { "trustedHosts", (object)addon.TrustedHosts ?? hosts }, { "sources", new[] { source } } };
             string configPath = Path.Combine(tempRoot, "selected.json");
             File.WriteAllText(configPath, json.Serialize(config), new UTF8Encoding(true));
             string powershell = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), @"WindowsPowerShell\v1.0\powershell.exe");
@@ -577,7 +580,7 @@ namespace WowUpdater {
             ((Button)testLayout.GetControlFromPosition(0, 5)).PerformClick();
             Application.DoEvents();
             using (var bitmap = new Bitmap(Width, Height)) { DrawToBitmap(bitmap, new Rectangle(0, 0, Width, Height)); bitmap.Save(Path.ChangeExtension(imagePath, ".more.png")); }
-            if (addons.Count != 21) throw new Exception("Unerwartete Anzahl Addon-Pakete: " + addons.Count);
+            if (addons.Count != 22) throw new Exception("Unerwartete Anzahl Addon-Pakete: " + addons.Count);
             var alphabetical = addons.Select(a => a.Name).OrderBy(name => name, StringComparer.Create(System.Globalization.CultureInfo.GetCultureInfo("de-DE"), true));
             if (!list.Items.Cast<ListViewItem>().Select(row => row.Text).SequenceEqual(alphabetical))
                 throw new Exception("Addon-Liste ist nicht alphabetisch sortiert.");
@@ -588,6 +591,20 @@ namespace WowUpdater {
             if (!tomtom.Installed || !tomtom.Row.Checked) throw new Exception("TomTom wurde nicht erkannt.");
             if (addons.Single(a => a.Name == "NPCScan").Row.Checked) throw new Exception("Nicht installiertes NPCScan wurde ausgewählt.");
             TestExtras();
+            TestCustomCatalog();
+            // Protokoll- und Fortschrittsmeldungen dürfen unveränderte Tabellen nicht neu zeichnen.
+            TranslateSurface();
+            Application.DoEvents();
+            int redundantInvalidations = 0;
+            InvalidateEventHandler countInvalidations = delegate { redundantInvalidations++; };
+            list.Invalidated += countInvalidations;
+            try {
+                for (int pass = 0; pass < 25; pass++) {
+                    AppendLog("INFO | Rendering regression test " + pass);
+                    TranslateSurface();
+                }
+            } finally { list.Invalidated -= countInvalidations; }
+            if (redundantInvalidations != 0) throw new Exception("Unveränderte Tabelle wird erneut gezeichnet: " + redundantInvalidations);
             TestButtonColors(tomtom);
             TestLocalization(imagePath);
             SelfUpdate.TestMetadata();
