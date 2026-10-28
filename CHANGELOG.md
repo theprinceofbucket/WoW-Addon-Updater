@@ -2,6 +2,8 @@
 
 ## 0.5.1 – 28.10.2026
 
+- Vollständiges Online-Selbstupdate von 0.5.0 auf 0.5.1 über „Nach Updates suchen“ am 28.10.2026 vom Projektbetreiber erfolgreich getestet.
+
 - ClassQoLTalentWarning ergänzt; 22 eingebaute Pakete in alphabetischer Reihenfolge.
 - Unveränderte Tabellenzellen und Spaltenüberschriften werden bei Protokollmeldungen nicht mehr erneut gesetzt; die pauschale Tabellen-Neuzeichnung entfällt.
 - Separates sichtbares Löschen des Tabellenhintergrunds entfernt; der native Doppelpuffer zeichnet den Hintergrund.
