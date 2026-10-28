@@ -2,9 +2,9 @@
 
 [English](README.md) | [Deutsch](README_DE.md)
 
-**Version 0.5.1 Beta · Windows · World of Warcraft WotLK 3.3.5a**
+**Version 0.5.1 · Windows · World of Warcraft WotLK 3.3.5a**
 
-**Beta:** Dieser Branch beschreibt 0.5.1, als GitHub-Vorabversion zum manuellen Testen verfügbar. Das neueste reguläre Release bleibt 0.5.0. Die Updateprüfung des Updaters und der dauerhafte Download-Link überspringen diese Beta. EXE und optionale JSON-Vorlage findest du im [Release v0.5.1](https://github.com/theprinceofbucket/WoW-Addon-Updater/releases/tag/v0.5.1).
+**Release 0.5.1:** EXE und optionale JSON-Vorlage findest du im [Release v0.5.1](https://github.com/theprinceofbucket/WoW-Addon-Updater/releases/tag/v0.5.1). Am 28.10.2026 bestätigte der Projektbetreiber: Das Tabellenflackern ist behoben und eigene Addons funktionieren einwandfrei. Die getestete EXE bleibt gegenüber der Vorabversion unverändert.
 
 Ein portabler Updater mit dunkler Oberfläche in Deutsch und Englisch. Er prüft eine hinterlegte Auswahl von 22 Addon-Paketen und kann ausgewählte Pakete installieren oder updaten. Die Addons stammen von GitHub, GitLab und ausgewählten ZIP-/Webseitenquellen. Nicht für aktuelle Retail- oder Classic-Clients gedacht.
 
@@ -65,7 +65,7 @@ Ersetzte Addon-Ordner werden unter `Interface/AddOns_UpdaterBackups` gesichert. 
 
 Warperia kann Downloads begrenzen. Der Updater umgeht keine Limits. Ein geprüfter Warperia-Download wird bis zu 24 Stunden lokal wiederverwendet; dabei kann ein älterer Quellenstand angezeigt werden. „WoW starten“ löscht diesen Cache, sodass beim nächsten Prüfen erneut Downloads nötig sind. Die Prüfung anderer Quellen lädt grundsätzlich Archive; es gibt keine reine Versionsabfrage. Die Addon-Verarbeitung erfolgt nacheinander.
 
-Version 0.5.1 ist eine Beta zum Testen. Downloadanbieter und Addon-Autoren können Strukturen ändern. Ein erfolgreicher Dateivergleich garantiert keine fehlerfreie Funktion im Spiel. Fehler bitte mit Updater-Version, Addon-Name und Protokoll melden; persönliche Pfade vor Veröffentlichung des Protokolls entfernen.
+Downloadanbieter und Addon-Autoren können Strukturen ändern. Ein erfolgreicher Dateivergleich garantiert keine fehlerfreie Funktion im Spiel. Fehler bitte mit Updater-Version, Addon-Name und Protokoll melden; persönliche Pfade vor Veröffentlichung des Protokolls entfernen.
 
 ## Selbst bauen
 
