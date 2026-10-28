@@ -2,9 +2,9 @@
 
 [English](README.md) | [Deutsch](README_DE.md)
 
-**Version 0.5.1 Beta · Windows · World of Warcraft WotLK 3.3.5a**
+**Version 0.5.1 · Windows · World of Warcraft WotLK 3.3.5a**
 
-**Beta:** This branch documents 0.5.1, available as a GitHub pre-release for manual testing. The latest stable release remains 0.5.0. The updater's update check and the latest-release download link skip this beta. Download the beta EXE and optional JSON template from [release v0.5.1](https://github.com/theprinceofbucket/WoW-Addon-Updater/releases/tag/v0.5.1).
+**Release 0.5.1:** Download the EXE and optional JSON template from [release v0.5.1](https://github.com/theprinceofbucket/WoW-Addon-Updater/releases/tag/v0.5.1). On October 28, 2026, the project owner confirmed that table flicker was fixed and custom addons worked correctly. The tested EXE is unchanged from the pre-release.
 
 A portable updater with a dark interface in English and German. It checks a built-in selection of 22 addon packages and can install or update selected packages. Addons are downloaded from GitHub, GitLab, and selected ZIP and website sources. Intended for the original 3.3.5a client, not current Retail or Classic clients.
 
@@ -65,7 +65,7 @@ Replaced addon folders are backed up under `Interface/AddOns_UpdaterBackups`. WT
 
 Warperia may limit downloads. The updater does not bypass these limits. A validated Warperia download is reused locally for up to 24 hours, so it may represent an older source version. **Start WoW** clears this cache, requiring new downloads on the next check. Checking other sources downloads archives rather than querying version numbers alone. Addon packages are processed sequentially.
 
-Version 0.5.1 is a beta for testing. Download providers and addon authors may change their file structures. A successful file comparison does not guarantee that an addon works correctly in-game. When reporting an issue, include the updater version, addon name, and log; remove personal paths before publishing the log.
+Download providers and addon authors may change their file structures. A successful file comparison does not guarantee that an addon works correctly in-game. When reporting an issue, include the updater version, addon name, and log; remove personal paths before publishing the log.
 
 ## Building from source
 
